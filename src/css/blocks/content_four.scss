@@ -1,0 +1,212 @@
+@function rem($px) {
+  @return $px/16px + 0rem;
+}
+//breakpoints
+$tablets: 768px;
+$phones: 480px;
+
+@mixin tablets {
+  @media screen and (max-width: $tablets), (max-width: 950px) {
+    @content;
+  }
+}
+@mixin phones {
+  @media screen and (max-width: $phones), (max-width: 767px) {
+    @content;
+  }
+}
+.team {
+  display: flex;
+  flex-direction: column;
+
+  
+  @include phones {
+    padding-top: 1.5625rem;
+  }
+
+  &__content-item {
+    height: 26.25rem;
+    
+
+    @include tablets {
+      width: 50%;
+      height: 50%;
+    }
+
+    @include phones {
+      width: 50%;
+    }
+  }
+
+  &__name {
+    align-self: center;
+    margin-bottom: 4.75rem;
+  }
+
+  &_title {
+    margin-bottom: 4.75rem;
+    text-align: center;
+
+    @include tablets {
+      margin-bottom: 1.5625rem;
+      font-size: rem(40px);
+    }
+
+    @include phones {
+      margin-bottom: 1.25rem;
+      font-size: 1.75rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    height: 28.875rem;
+    align-items: center;
+    width: 58.75rem;
+    margin: 0 5rem;
+
+    @include tablets {
+      flex-flow: wrap;
+      width: auto;
+      height: 70%;
+      justify-content: space-evenly;
+      align-items: inherit;
+    }
+
+    @include phones {
+      margin: 0 auto;
+      width: 80%;
+    }
+
+    li:nth-child(2n+1) {
+      align-self: flex-start;
+    }
+  }
+
+  &__photo {
+    margin-bottom: 1.5rem;
+    height: 18.125rem;
+    width: 13.75rem;
+    background-position: center;
+
+    @include tablets {
+      height: 11.625rem;
+      width: 10.25rem;
+      margin: 0 auto;
+      background-size: cover;
+      margin: 0 auto;
+    }
+   
+    @include phones {
+      height: 11.375rem;
+      width: 8.75rem;
+      margin: 0 auto;
+      background-size: cover;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  
+
+    @include tablets {
+      margin-top: 0.6875rem;
+    }
+
+    @include phones {
+      margin-top: .625rem;
+    }
+
+    &-name {
+      font-family: 'AlegreyaSans-Medium';
+      font-size: 1.3125rem;
+      margin-bottom: .875rem;
+      display: flex;
+      transition: height 0.4s;
+
+      @include phones {
+        margin-bottom: .1875rem;
+        font-size: .94rem;
+      }
+
+      a {
+        color: #323232;
+      }
+    }
+
+    &-proff {
+      font-family: 'AlegreyaSans-Regular';
+      font-size: 1.125rem;
+      margin-bottom: 5px;
+      color: #281e1e;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.4s;
+
+      @include phones {
+        font-size: .875rem;
+      }
+    }
+
+    &-text {
+      color: #666666;
+      font-family: 'AlegreyaSans-Light';
+      font-size: 1.125rem;
+      text-align: center;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s;
+      @include tablets {
+        font-size: 0.9rem;
+      }
+
+      @include phones {
+        font-size: .75rem;
+      }
+    }
+  }
+}
+
+.desc_active {
+  .team__description-proff {
+    height: 1.1875rem;
+  }
+
+  .team__description-text {
+    height: 3.7rem;
+
+    @include phones {
+      height: 2.9rem;
+    }
+  }
+
+  .triangle {
+    transform: rotate(180deg);
+  }
+}
+
+.raspberries::before {
+  content: url("../img/raspberry.png");
+  position: absolute;
+  left: 0;
+  bottom: -40px;
+  z-index: 10;
+  @include tablets {
+    content: url("../img/raspberry_480.png");
+  }
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: .375rem solid transparent;
+  border-right: .375rem solid transparent;
+  border-top: .5rem solid #0f5a47;
+  align-self: center;
+  margin-left: .375rem;
+}

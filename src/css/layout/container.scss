@@ -1,0 +1,80 @@
+//breakpoints
+$tablets: 768px;
+$phones: 480px;
+
+@mixin tablets {
+  @media screen and (max-width: $tablets), (max-width: 1099px) {
+    @content;
+  }
+}
+@mixin phones {
+  @media screen and (max-width: $phones), (max-width: 480px) {
+    @content;
+  }
+}
+
+@function rem($px) {
+  @return ($px/16px) *1rem;
+}
+.container {
+  width: 100%;
+  max-width: rem(1100px); 
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  //@media(max-width:768px){
+   // min-height: rem(1024px);
+  }
+ // @media(max-width:480px){
+ //   min-height: rem(568px);
+//  }
+//}
+.container_hero {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-image: url('../img/chocco_back_min.png');
+  background-repeat: no-repeat;
+  background-position: 93% 36%;
+}
+
+.container_workers {
+  align-items: center;
+  position: relative;
+}
+
+.container_benefit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include phones {
+    background-image: url('../img/leave_480.png');
+    background-repeat: no-repeat;
+    background-position: 0px 30%;
+    background-size: 45%;
+  }
+}
+
+.container_assortment {
+  align-items: center;
+}
+
+.container_feedback {
+  align-items: center;
+}
+.container_video {
+  align-items: center;
+}
+
+.container_order {
+  align-items: center;
+  @include tablets {
+    display: flex;
+  }
+}
+.maincontent {
+  height: 100vh;
+  will-change: transform;
+ transition: transform 1s;
+}

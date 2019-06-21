@@ -1,0 +1,28 @@
+.map_block {
+  height: 100%;
+  width: 100%;
+}
+
+.hint {
+  padding: 5px;
+  height: 30px;
+  min-width: 180px;
+  font-size: 12px;
+  line-height: 1;
+  color: #07644d;
+  background-color: #fff;
+  border: 1px solid #fff;
+  display: flex;
+  text-align: center;
+}
+
+.balloon {
+	padding: 5px;
+	font-size: 12px;
+	line-height: 1;
+	color: #07644d;
+	background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+

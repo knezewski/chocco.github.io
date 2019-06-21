@@ -1,0 +1,159 @@
+@function rem($px) {
+  @return ($px/16px) * 1rem;
+}
+//breakpoints
+$tablets: 768px;
+$phones: 480px;
+
+@mixin tablets {
+  @media screen and (max-width: $tablets), (max-width: 1099px) {
+    @content;
+  }
+}
+@mixin phones {
+  @media screen and (max-width: $phones), (max-width: 767px) {
+    @content;
+  }
+}
+.accordion {
+  display: flex;
+  height: 100vh;
+  min-height: rem(650px);
+  position: relative;
+}
+
+.accordion_title {
+  color: #ffffff;
+  padding-top: 6.4375rem;
+  padding-left: 4.9375rem;
+  padding-right: 4.9375rem;
+
+  @include phones {
+    font-size: 1.75rem;
+  }
+}
+
+.accordion__list {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.accordion_active {
+  width: 70%;
+  transition: width 0.2s;
+}
+
+.accordion__form-title {
+  width: 6.1875rem;
+  height: 100vh;
+  color: #ffffff;
+  writing-mode: vertical-rl;
+  display: flex;
+  align-items: center;
+  font-family: 'AlegreyaSans-Medium';
+  font-size: 3rem;
+  transform: rotate(180deg);
+  padding-top: rem(35px);
+  color: #ffffff;
+  position: relative;
+
+  @include tablets {
+    width: 6.1875rem;
+  }
+
+  @include phones {
+    width: rem(40px);
+    font-size: rem(22px);
+  }
+}
+
+.accordion_active {
+  width: 100%;
+  
+
+  @include tablets {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.accordion__form-text {
+  background-color: rgb(0, 0, 0);
+  opacity: 0.749;
+  color: #ffffff;
+  font-family: 'AlegreyaSans-Regular';
+  font-size: 1rem;
+  line-height: 1.5rem;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.6s;
+  @include phones {
+    font-size: .625rem;
+  }
+}
+
+.accordion__form-text{
+  p {
+    opacity: 0;
+  }
+}
+
+.accordion_active {
+  .accordion__form-text {
+    padding: 3.4375rem 0 0 1.875rem;
+  }
+}
+
+.accordion_active {
+  .accordion__form-text {
+    p {
+      opacity: 1;
+      transition: opacity 8s;
+    }
+  }
+}
+
+.menu,
+.accordion {
+  @include tablets {
+    min-height: rem(650px);
+  }
+
+  @include phones {
+    min-height: rem(568px);
+  }
+}
+ 
+.accordion__item {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+.accordion_active {
+  .accordion__item {
+    width: 100%;
+    
+  }
+}
+
+.animation {
+  animation: box 1s;
+
+}
+
+  
+@keyframes box {
+  from {transform:translateX(100%);
+  width: 100%;}
+  to {transform:translateX(0%);
+  width: 100%;}
+ }
+
+ 

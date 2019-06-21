@@ -1,0 +1,184 @@
+@function rem($px) {
+  @return ($px/16px) *1rem;
+}
+
+//breakpoints
+$tablets: 768px;
+$phones: 480px;
+
+@mixin tablets {
+  @media screen and (max-width: $tablets), (max-width: 1099px) {
+    @content;
+  }
+}
+@mixin phones {
+  @media screen and (max-width: $phones), (max-width: 480px) {
+    @content;
+  }
+}
+.header {
+  color: #ffffff;
+  margin: rem(21px) rem(70px) rem(95px);
+  display: flex;
+  position: absolute;
+  top: 0;
+
+  @include tablets {
+    justify-content: space-between;
+    margin: 1.31rem 1.5rem 0;
+    position: static;
+  }
+
+  &__logo {
+    font-size: 1.5rem;
+    margin-right: 2.5rem;
+    font-family: 'MuseoSansCyrl_500';
+    line-height: 1.31rem;
+
+    @include tablets {
+      margin: 0;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    margin-right: 2.5rem;
+
+    @include tablets {
+      margin: 0;
+    }
+  }
+
+  &__nav-list {
+    width: 39.4rem;
+    display: flex;
+    justify-content: space-between;
+
+    li:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__nav-item {
+    font-size: 1.2rem;
+
+    @include tablets {
+      margin-top: 1.875rem;
+    }
+
+    @include phones {
+      margin-top: rem(24px);
+    }
+  }
+
+  a {
+    color: #ffffff;
+    font-family: 'AlegreyaSans-Regular';
+
+    @include tablets {
+      font-size: 2.5rem;
+    }
+
+    @include phones {
+      font-size: rem(20px);
+    }
+  }
+
+  a:hover {
+    color: #0f5a47;
+  }
+
+
+  &__phone-pic {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.phone_link {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-family: 'AlegreyaSans-Regular';
+  text-transform: uppercase;
+  color: #ffffff;
+
+  &:hover {
+    color: #0f5a47;
+  }
+}
+
+.phone_link:hover .header__phone-pic {
+  filter: none;
+}
+
+.close {
+  position: absolute;
+  width: rem(16px);
+  height: rem(16px);
+  opacity: 1;
+  display: none;
+  top: rem(10px);
+  right: rem(40px);
+
+  @include phones {
+    right: rem(10px);
+    top: rem(5px);
+  }
+  @include tablets {
+    z-index: 100;
+  }
+} 
+
+.header__nav-list {
+  @include tablets {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    right: 0;
+    background-color: #303436;
+    opacity: .99;
+    z-index: 10;
+    text-align: center;
+    flex-direction: column;
+    position: absolute;
+    justify-content: flex-start;
+    padding-top: 3.75rem;
+  }
+}
+
+
+.header__nav {
+  .hamburger_menu {
+  @include tablets {
+    height: 1.7rem;
+    width: 1.7rem;
+    background-image: url('../img/menu_icon_min.png');
+    background-repeat: no-repeat;
+    align-self: center;
+    position: relative;
+    margin: 0;
+  }
+  @include phones {
+    height: 1.25rem;
+    width: 1.25rem;
+    background-image: url(../img/menu_icon_min.png);
+    background-repeat: no-repeat;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    position: relative;
+    margin: 0;
+    background-size: contain;
+  }
+}
+}
+
+.phone_link {
+  @include tablets {
+    visibility: hidden;
+    position: absolute;
+    top: -1000px;
+  }
+}

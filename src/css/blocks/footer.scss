@@ -1,0 +1,119 @@
+@function rem($px) {
+  @return ($px/16px) * 1rem;
+}
+//breakpoints
+$tablets: 768px;
+$phones: 480px;
+
+@mixin tablets {
+  @media screen and (max-width: $tablets), (max-width: 1099px) {
+    @content;
+  }
+}
+@mixin phones {
+  @media screen and (max-width: $phones), (max-width: 767px) {
+    @content;
+  }
+}
+.footer {
+  height: 5.8125rem;
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+
+  @include phones {
+    height: 9.69rem;
+  }
+}
+
+.footer__content {
+  display: flex;
+  padding: 0 5rem;
+
+  @include tablets {
+    padding: 0 1.5rem;
+  }
+
+  @include phones {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin-top: 1.6875rem;
+
+  &__address {
+    @include phones {
+      margin-bottom: 1.25rem;
+    }
+  }
+}
+
+.contacts__address,
+.contacts__phone {
+  font-family: 'AlegreyaSans-Regular';
+  font-size: 1.3125rem;
+
+  @include phones {
+    font-weight: bold;
+  }
+}
+
+
+.contacts__phone {
+  color: #0f5a47;
+  display: flex;
+  align-items: baseline;
+
+  @include phones {
+    justify-content: center;
+  }
+}
+
+.contacts__phone-img {
+  margin-right: .375rem;
+  height: .6rem;
+  width: .6rem;
+}
+
+.social {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2.8125rem;
+
+  @include phones {
+    margin-top: 1.5625rem;
+  }
+}
+
+.social__list {
+  display: flex;
+  align-items: baseline;
+}
+
+.social__elem {
+  margin-right: .375rem;
+}
+
+.social__elem:last-child {
+  margin: 0;
+}
+
+.social__pic {
+  fill: grey;
+  margin-right: .625rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+a .social__pic:hover {
+  fill: #111;
+}

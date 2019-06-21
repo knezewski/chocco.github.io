@@ -1,0 +1,157 @@
+//breakpoints
+$tablets: 768px;
+$phones: 480px;
+
+@mixin tablets {
+  @media screen and (max-width: $tablets) {
+    @content;
+  }
+}
+@mixin phones {
+  @media screen and (max-width: $phones), (max-width: 767px) {
+    @content;
+  }
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  @include tablets {
+    padding-top: 2.75rem;
+  }
+
+  @include phones {
+    padding-top: 1.25rem;
+  }
+
+  &_title {
+    margin-bottom: .625rem;
+
+    @include tablets {
+      font-size: rem(30px);
+    }
+
+    @include phones {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__text {
+    font-family: 'AlegreyaSans-Regular';
+    font-size: 1.125rem;
+    color: #666666;
+    margin-bottom: .5625rem;
+
+    @include tablets {
+      margin-bottom: 0;
+      font-size: rem(16px);
+    }
+
+    @include phones {
+      font-size: .81rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.description {
+  display: flex;
+  width: rem(960px);
+  justify-content: space-between;
+  @media screen and (max-width: 964px) {
+    width: 90%;
+  }
+
+  @include tablets {
+    flex-direction: column;
+  }
+
+  &__icon {
+    height: 8.25rem;
+    width: 8.25rem;
+    background-color: #f2f5f4;
+    border-radius: 50%;
+    border: .0625rem solid #f2f5f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.9375rem auto;
+
+    @include tablets {
+      height: 6.68rem;
+      width: 6.68rem;
+      margin: .56rem auto;
+    }
+
+    @include phones {
+      height: 5rem;
+      width: 5rem;
+      margin: .25rem auto;
+    }
+  }
+
+  &__icon-pic {
+    height: 4.375rem;
+    width: 4.375rem;
+    fill: #f2f5f4;
+    stroke: black;
+    @include tablets{
+      height: 3.375rem;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__container-title {
+    font-family: 'AlegreyaSans-Bold';
+    font-size: 1.6875rem;
+    margin-bottom: 1.4375rem;
+
+    @include tablets {
+      margin-bottom: rem(10px);
+    }
+
+    @include phones {
+      font-size: 1.125rem;
+      margin-bottom: .1875rem;
+    }
+  }
+
+  &__container-text {
+    font-family: 'AlegreyaSans-Light';
+    font-size: 1.125rem;
+    color: #666666;
+    text-align: center;
+    @media screen and (max-width: 964px) {
+      font-size: rem(12px);
+    }
+
+    @include phones {
+      font-size: .75rem;
+    }
+  }
+}
+
+.img {
+  @include tablets {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    bottom: 190px;
+  }
+}
+
+.img::before {
+  content: url("../img/raspberries.png");
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  @include tablets {
+    content: url("../img/raspberries_480.png");
+  }
+}
