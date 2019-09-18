@@ -3,6 +3,7 @@
 
 
 ##  Чтобы развернуть проект необходимо:
+Клонировать папку
 ```sh
 $ git clone https://github.com/knezewski/chocco.github.io.git
 
